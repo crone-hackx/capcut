@@ -3,7 +3,7 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const corsHeaders = {
-      'Access-Control-Allow-Origin': '*', // 🔒 Replace with your domain in production
+      'Access-Control-Allow-Origin': 'https://worldoftech.qzz.io/capcut', // 🔒 Replace with your domain in production
       'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
       'Access-Control-Max-Age': '86400',
