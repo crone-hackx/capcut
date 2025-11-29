@@ -2,8 +2,10 @@ name = "capcut-backend"
 main = "src/index.js"
 compatibility_date = "2024-11-29"
 
-# D1 Binding
 [[d1_databases]]
 binding = "DB"
 database_name = "capcut_comments"
-database_id = "18ba4a7c-fb04-40c4-bb0a-9860cc2d40a5"  # ← Replace with your D1 DB ID
+database_id = "18ba4a7c-fb04-40c4-bb0a-9860cc2d40a5"  # ← Replace with your real ID
+
+[triggers]
+crons = ["0 0 * * *"]  # Runs daily at 00:00 UTC
