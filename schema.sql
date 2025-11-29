@@ -1,18 +1,15 @@
-DROP TABLE IF EXISTS comment_likes;
-DROP TABLE IF EXISTS comments;
-
-CREATE TABLE comments (
+-- Ensure comments table exists (from before)
+CREATE TABLE IF NOT EXISTS comments (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  username TEXT NOT NULL CHECK (length(username) >= 2 AND length(username) <= 20),
-  text TEXT NOT NULL CHECK (length(text) >= 5 AND length(text) <= 500),
-  likes INTEGER DEFAULT 0,
-  created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+  username TEXT NOT NULL,
+  text TEXT NOT NULL,
+  likes INTEGER DEFAULT 0
 );
 
-CREATE TABLE comment_likes (
+-- NEW: Track user likes (prevent duplicates)
+CREATE TABLE IF NOT EXISTS comment_likes (
   comment_id INTEGER NOT NULL,
   user_identifier TEXT NOT NULL,
-  liked_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
   PRIMARY KEY (comment_id, user_identifier),
   FOREIGN KEY (comment_id) REFERENCES comments(id) ON DELETE CASCADE
 );
