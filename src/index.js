@@ -141,12 +141,10 @@ async function readJson(request) {
   }
 }
 
-function getClientId(request) {
-  // Use CF-Connecting-IP if available (paid plans), fallback to hashed UA
+async function getClientId(request) {
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
   const ua = request.headers.get('User-Agent') || '';
   
-  // Create a simple hash (not cryptographic, but sufficient for deduplication)
   const encoder = new TextEncoder();
   const data = encoder.encode(ip + ua);
   const hashBuffer = await crypto.subtle.digest('SHA-256', data);
