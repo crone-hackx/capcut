@@ -1,0 +1,9 @@
+name = "capcut-backend"
+main = "src/index.js"
+compatibility_date = "2024-11-29"
+
+# D1 Binding
+[[d1_databases]]
+binding = "DB"
+database_name = "capcut_comments"
+database_id = "your-d1-database-id"  # ← Replace with your D1 DB ID
